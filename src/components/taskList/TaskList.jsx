@@ -27,7 +27,7 @@ export default function TaskList({
             </>
           )}
           {incompleteTasks === 0 && (
-            <h2> 🥳 Bravo ! Tu as tout fini tes tâches !</h2>
+            <h2> 🥳 Bravo ! Tu as fini toutes tes tâches !</h2>
           )}
         </h2>
         {tasksList && tasksList.length > 0 && (

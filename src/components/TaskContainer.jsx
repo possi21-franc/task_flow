@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Footer from "./footer/Footer";
-import Header from "./header/header";
+import Header from "./header/Header";
 import TaskInput from "./taskInput/Taskinput";
 import TaskList from "./taskList/TaskList";
 
