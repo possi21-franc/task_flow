@@ -4,7 +4,8 @@ export default function Footer({ completedTasks }) {
     return (
       <footer className={styles.footer}>
         <code>
-          Avec TaskFlow, tu as accompli {completedTasks} tâche
+          Avec TaskFlow, tu as accompli{" "}
+          <span className="important2">{completedTasks}</span> tâche
           {completedTasks > 1 ? "s" : ""} !
         </code>
       </footer>

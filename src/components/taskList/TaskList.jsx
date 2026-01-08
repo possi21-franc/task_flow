@@ -5,6 +5,7 @@ export default function TaskList({
   editTask,
   deleteTask,
   incompleteTasks,
+  recentlyAddedId,
 }) {
   const taskList = tasksList.map((task) => (
     <TaskItem
@@ -12,12 +13,13 @@ export default function TaskList({
       task={task}
       editTask={editTask}
       deleteTask={deleteTask}
+      recentlyAddedId={recentlyAddedId}
     />
   ));
 
   if (tasksList && tasksList.length > 0) {
     return (
-      <div className={"box " + (tasksList.length > 5 ? "box--scroll" : "")}>
+      <div className={"box " + (tasksList.length > 3 ? "box--scroll" : "")}>
         <h2 className={Styles.title}>
           {incompleteTasks > 0 && (
             <>

@@ -2,8 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 12px 16px;
   margin-bottom: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(79, 70, 229, 0.06),
+    rgba(26, 26, 26, 0.02)
+  );
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 .titleContainer {
   display: flex;
@@ -14,11 +22,60 @@
 .logo {
   width: 50px;
   height: 50px;
+  border-radius: 8px;
+  transition: transform 0.18s ease;
 }
 
 @media screen and (max-width: 600px) {
   .logo {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
   }
+  .taskContainer {
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+  }
+  .titleContainer {
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+  .subtitle {
+    display: none;
+  }
+  .version {
+    font-size: 0.72rem;
+    padding: 4px 8px;
+  }
+}
+
+/* Title and subtitle styles */
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: 700;
+  color: #ffffff;
+}
+.subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.version {
+  display: inline-block;
+  background: rgba(79, 70, 229, 0.12);
+  color: #dfe4ff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.taskContainer:hover .logo {
+  transform: translateY(-3px) scale(1.02);
 }

@@ -8,20 +8,31 @@ export default function TaskContainer() {
   const [tasksList, setTasksList] = useState(() => {
     try {
       const stored = localStorage.getItem("tasks");
-      return stored ? JSON.parse(stored) : [];
+      const parsed = stored ? JSON.parse(stored) : [];
+      // ensure tasks are ordered by id desc (newest first)
+      return parsed.sort((a, b) => b.id - a.id);
     } catch (e) {
       return [];
     }
   });
+  const [recentlyAddedId, setRecentlyAddedId] = useState(null);
 
   // fonction pour ajouter une tâche
   const addTask = (title) => {
-    const newTask = {
-      id: tasksList.length ? tasksList[tasksList.length - 1].id + 1 : 1,
-      title: title,
-      completed: false,
-    };
-    setTasksList([...tasksList, newTask]);
+    // compute next id safely (use current max id)
+    const nextId = tasksList.length
+      ? Math.max(...tasksList.map((t) => t.id)) + 1
+      : 1;
+    const newTask = { id: nextId, title: title, completed: false };
+    setTasksList((prev) => {
+      const next = [newTask, ...prev];
+      // keep sorted by id desc
+      next.sort((a, b) => b.id - a.id);
+      return next;
+    });
+    setRecentlyAddedId(newTask.id);
+    // clear the recent id after the animation duration
+    setTimeout(() => setRecentlyAddedId(null), 800);
   };
 
   // sauvegarder dans localStorage quand la liste change
@@ -63,6 +74,7 @@ export default function TaskContainer() {
           editTask={editTask}
           deleteTask={deleteTask}
           incompleteTasks={incompleteTasks}
+          recentlyAddedId={recentlyAddedId}
         />
         <Footer completedTasks={completedTasks} />
       </div>
