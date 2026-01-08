@@ -1,6 +1,11 @@
 import styles from "./TaskItem.module.css";
 
-export default function TaskItem({ task, editTask, deleteTask, recentlyAddedId }) {
+export default function TaskItem({
+  task,
+  editTask,
+  deleteTask,
+  recentlyAddedId,
+}) {
   const isNew = recentlyAddedId === task.id;
   return (
     <li
@@ -9,13 +14,13 @@ export default function TaskItem({ task, editTask, deleteTask, recentlyAddedId }
       } ${isNew ? styles.enter : ""}`}
     >
       <div className={styles.item}>
-        <div
+        {/* <div
           className={`${styles.id} ${
             task?.completed ? styles.idSuccess : styles.idDefault
           }`}
         >
           {task.id}
-        </div>
+        </div> */}
         <input
           type="checkbox"
           className={styles.checkbox}
