@@ -1,5 +1,7 @@
 import styles from "./header.module.css";
 import reactLogo from "../../assets/react.svg";
+import ThemeToggle from "../theme/ThemeToggle";
+
 export default function Header() {
   return (
     <div className={styles.taskContainer}>
@@ -12,7 +14,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <code className={`${styles.version} color-primary`}>v.1.0</code>
+      <ThemeToggle />
     </div>
   );
 }

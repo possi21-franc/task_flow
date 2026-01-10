@@ -17,7 +17,7 @@
 .checkbox {
   width: 18px;
   height: 18px;
-  accent-color: #4f46e5;
+  accent-color: var(--accent);
   cursor: pointer;
 }
 
@@ -38,12 +38,12 @@
 }
 
 .default {
-  background: #171717;
-  border-color: #272727;
+  background: var(--surface);
+  border-color: var(--surface-border);
 }
 .default:hover {
-  background: rgba(59, 121, 246, 0.03);
-  border-color: rgba(59, 121, 246, 0.15);
+  background: rgba(79, 70, 229, 0.03);
+  border-color: rgba(79, 70, 229, 0.12);
 }
 .success {
   background: rgba(84, 255, 14, 0.07);
@@ -65,18 +65,18 @@
 }
 
 .idDefault {
-  background-color: rgba(59, 121, 246, 0.15);
-  color: #3b79f6;
+  background-color: rgba(79, 70, 229, 0.12);
+  color: var(--accent-strong);
 }
 
 .idSuccess {
-  background-color: rgba(84, 255, 14, 0.15);
-  color: #2d8c0d;
+  background-color: rgba(45, 140, 13, 0.12);
+  color: var(--positive);
 }
 .contentDefault {
-  color: #ffffff;
+  color: var(--text);
 }
 .contentSuccess {
   text-decoration: line-through;
-  color: rgba(84, 255, 14, 0.4);
+  color: rgba(45, 140, 13, 0.35);
 }

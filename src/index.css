@@ -4,13 +4,55 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  /* Theme tokens */
+  --bg: #262626;
+  --text: rgba(255, 255, 255, 0.87);
+  --muted: rgba(255, 255, 255, 0.75);
+  --surface: #171717;
+  --surface-border: #272727;
+  --button-bg: #1890ff;
+  --button-bg-light: #1890ff;
+  --accent: #4f46e5;
+  --accent-strong: #3b79f6;
+  --positive: #2d8c0d;
+  --muted-2: #b3b3b3;
+  --toggle-bg: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+
+  /* Font weight tokens */
+  --fw-regular: 400;
+  --fw-heading: 600;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Use Poppins as the primary UI font when available */
+html,
+body,
+#root {
+  font-family: "Poppins";
+}
+
+/* Transition tokens for smooth theme changes */
+:root {
+  --theme-transition: background-color 220ms ease, color 220ms ease,
+    border-color 220ms ease, box-shadow 220ms ease, fill 220ms ease,
+    stroke 220ms ease;
+}
+/* Theme toggling using data-theme on the root element
+/* Use attribute `data-theme="light"` or `data-theme="dark"` on <html> to force theme */
+:root[data-theme="light"] {
+  color: #213547;
+  background-color: #ffffff;
+}
+:root[data-theme="dark"] {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #262626;
+}
+
 #root {
   max-width: 1200px;
   margin: 0 auto;
@@ -22,18 +64,22 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   min-width: 320px;
-  background-color: #262626;
+  background-color: var(--bg);
+  color: var(--text);
+  font-weight: var(--fw-regular);
 }
 
 h1 {
   font-size: 2em;
   line-height: 1.6;
   margin: 0;
+  font-weight: var(--fw-heading);
 }
 h2 {
   font-size: 1.2em;
   line-height: 1.6;
   margin: 0;
+  font-weight: var(--fw-heading);
 }
 
 /* Responsive titles: smaller on small screens */
@@ -69,7 +115,7 @@ button {
   font-family: inherit;
   display: flex;
   align-items: center;
-  background-color: #1a1a1a;
+  background: var(--button-bg);
   cursor: pointer;
   transition: border-color 0.25s;
   gap: 15px;
@@ -77,37 +123,104 @@ button {
 button:hover {
   border-color: #646cff;
 }
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* explicit theme tokens for data-theme attribute */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  /* code element tokens */
+  --code-bg: rgba(255, 255, 255, 0.04);
+  --code-text: var(--text);
+  --code-border: rgba(255, 255, 255, 0.06);
+  --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+    "Helvetica Neue", monospace;
+  --text: #213547;
+  --muted: rgba(0, 0, 0, 0.6);
+  --surface: #f9f9f9;
+  --surface-border: #e6e6e6;
+  --button-bg: #1890ff;
+  --code-bg: rgba(0, 0, 0, 0.04);
+  --code-border: rgba(0, 0, 0, 0.06);
+  --code-text: var(--text);
+  --accent: #4f46e5;
+  --accent-strong: #747bff;
+  --positive: #389e0d;
+  --muted-2: #666666;
+  --toggle-bg: rgba(0, 0, 0, 0.04);
+  --code-bg: rgba(255, 255, 255, 0.04);
+  --code-border: rgba(255, 255, 255, 0.06);
+  --code-text: var(--text);
+}
+:root[data-theme="dark"] {
+  --bg: #262626;
+  --text: rgba(255, 255, 255, 0.87);
+  --muted: rgba(255, 255, 255, 0.75);
+  --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono",
+    "Helvetica Neue", monospace;
+  --surface: #171717;
+  --surface-border: #272727;
+  --button-bg: #1890ff;
+  --accent: #4f46e5;
+  --accent-strong: #3b79f6;
+  --positive: #73d13d;
+  --muted-2: #b3b3b3;
+  --toggle-bg: rgba(255, 255, 255, 0.04);
+}
+
+/* Global code styles that apply equally to both themes */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--code-font);
+  font-size: 0.8rem;
+}
+
+code {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--code-border);
+}
+
+pre {
+  background-color: var(--surface);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--surface-border);
+  overflow: auto;
+}
+
+/* Apply transition to core elements so theme changes are smooth */
+body,
+button,
+.box,
+.taskContainer,
+.title,
+.subtitle,
+code,
+pre,
+.container,
+.element,
+.input,
+.item {
+  transition: var(--theme-transition);
 }
 
 /*style general des elements*/
 
 .color-primary {
-  color: #4f46e5;
+  color: var(--accent);
 }
 .color-gray {
-  color: #666;
+  color: var(--muted-2);
 }
 
 .box {
   border-radius: 8px;
-  background-color: #171717;
-  border: 1px solid #272727;
+  background-color: var(--surface);
+  border: 1px solid var(--surface-border);
   padding: 24px;
   margin-bottom: 20px;
 }
@@ -128,18 +241,14 @@ button:focus-visible {
   padding: 0;
 }
 
-.button-primary {
-  background-color: #1890ff;
-  color: #ffffff;
-}
 .important {
   border-radius: 10px;
   padding: 5px 8px;
   font-weight: 900;
   margin: 0 6px;
   font-size: 0.8rem;
-  background-color: rgba(59, 121, 246, 0.15);
-  color: #1890ff;
+  background-color: rgba(79, 70, 229, 0.12);
+  color: var(--button-bg);
 }
 .important2 {
   border-radius: 10px;
@@ -147,6 +256,6 @@ button:focus-visible {
   font-weight: 900;
   margin: 0 6px;
   font-size: 0.8rem;
-  background-color: rgba(59, 121, 246, 0.15);
-  color: #00ff7b;
+  background-color: rgba(79, 70, 229, 0.12);
+  color: var(--positive);
 }

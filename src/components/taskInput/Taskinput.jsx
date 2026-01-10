@@ -27,9 +27,7 @@ export default function TaskInput({ addTask }) {
           onChange={handleInputChange}
           value={taskTitle}
         />
-        <button className="button-primary" type="submit">
-          Ajouter
-        </button>
+        <button type="submit">Ajouter</button>
       </form>
     </div>
   );

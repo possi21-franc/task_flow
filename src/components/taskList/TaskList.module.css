@@ -15,7 +15,7 @@
   padding-top: 8px;
   padding-bottom: 8px;
   border-radius: 6px;
-  color: white;
+  color: var(--text);
 }
 @media screen and (max-width: 600px) {
   .title {
@@ -28,5 +28,5 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
+  color: var(--muted);
 }

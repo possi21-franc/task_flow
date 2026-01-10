@@ -3,7 +3,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 70px;
-  color: white;
+  color: var(--muted);
   text-align: center;
   font-size: 1rem;
 }
@@ -12,5 +12,5 @@ footer {
   justify-content: center;
   align-items: center;
   height: 70px;
-  color: white;
+  color: var(--muted);
 }
