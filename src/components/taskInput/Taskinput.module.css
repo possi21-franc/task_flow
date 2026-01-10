@@ -23,9 +23,13 @@
 input:focus {
   outline: none;
   border-color: #646cff;
+  color: black;
 }
 .form {
   display: flex;
   justify-content: space-between;
   gap: 5px;
+}
+input::placeholder {
+  color: #b3b3b3;
 }

@@ -77,10 +77,10 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -139,7 +139,7 @@ button:focus-visible {
   margin: 0 6px;
   font-size: 0.8rem;
   background-color: rgba(59, 121, 246, 0.15);
-  color: #2870ff;
+  color: #1890ff;
 }
 .important2 {
   border-radius: 10px;
