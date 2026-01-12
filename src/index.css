@@ -38,9 +38,9 @@ body,
 
 /* Transition tokens for smooth theme changes */
 :root {
-  --theme-transition: background-color 220ms ease, color 220ms ease,
-    border-color 220ms ease, box-shadow 220ms ease, fill 220ms ease,
-    stroke 220ms ease;
+  --theme-transition: background-color 300ms ease, color 300ms ease,
+    border-color 300ms ease, box-shadow 300ms ease, fill 300ms ease,
+    stroke 300ms ease;
 }
 /* Theme toggling using data-theme on the root element
 /* Use attribute `data-theme="light"` or `data-theme="dark"` on <html> to force theme */
@@ -109,10 +109,11 @@ button {
   border-radius: 8px;
   border: 1px solid transparent;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.6em 1.2em;
   height: 48px;
   font-family: inherit;
+  color: white;
   display: flex;
   align-items: center;
   background: var(--button-bg);
@@ -149,6 +150,10 @@ button:hover {
   --code-bg: rgba(255, 255, 255, 0.04);
   --code-border: rgba(255, 255, 255, 0.06);
   --code-text: var(--text);
+  /* Scrollbar theme tokens (light) */
+  --scrollbar-bg: #f4f4f4;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.18);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
 }
 :root[data-theme="dark"] {
   --bg: #262626;
@@ -164,6 +169,10 @@ button:hover {
   --positive: #73d13d;
   --muted-2: #b3b3b3;
   --toggle-bg: rgba(255, 255, 255, 0.04);
+  /* Scrollbar theme tokens (dark) */
+  --scrollbar-bg: #1b1b1b;
+  --scrollbar-thumb: rgba(255, 255, 255, 0.1);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.18);
 }
 
 /* Global code styles that apply equally to both themes */
@@ -239,6 +248,29 @@ pre,
   flex: 1 1 auto;
   margin: 0;
   padding: 0;
+}
+
+/* The task list scrollbar adapts to theme using CSS variables above. */
+.box--scroll > ul {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+}
+
+.box--scroll > ul::-webkit-scrollbar {
+  width: 10px;
+  background: var(--scrollbar-bg);
+}
+.box--scroll > ul::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+.box--scroll > ul::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.box--scroll > ul::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
 }
 
 .important {
