@@ -1,36 +1,446 @@
-.element {
-  background-color: var(--surface);
-  box-shadow: 0 4px 6px rgba(118, 69, 255, 0.1),
-    0 1px 3px rgba(51, 0, 255, 0.06);
-  padding: 10px 15px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+/* ===== WRAPPER ===== */
+.taskInputWrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 20px 24px 16px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px var(--shadow-color);
 }
-.title {
-  font-size: 1.5em;
-  margin-bottom: 8px;
-  color: var(--text);
+
+.taskInputWrapper:hover {
+  border-color: var(--color);
+  box-shadow: 0 4px 24px var(--shadow-color);
 }
-.input {
-  width: 100%;
-  padding: 8px;
-  height: 30px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1px solid var(--surface-border);
-  color: var(--text);
+
+.taskInputWrapper.focused {
+  border-color: var(--color);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
 }
-input:focus {
-  outline: none;
-  border-color: var(--accent);
-  color: var(--text);
-  background-color: var(--surface);
-}
+
+/* ===== FORMULAIRE ===== */
 .form {
   display: flex;
-  justify-content: space-between;
-  gap: 5px;
+  flex-direction: column;
+  gap: 12px;
 }
-input::placeholder {
-  color: var(--muted-2);
+
+/* ===== INPUT CONTAINER ===== */
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--color);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.08);
+}
+
+.inputIcon {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-right: 8px;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.inputWrapper:focus-within .inputIcon {
+  color: var(--color);
+  opacity: 1;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  padding: 12px 0;
+  font-family: inherit;
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.clearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.clearBtn:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  opacity: 1;
+}
+
+/* ===== BOUTON EXPAND ===== */
+.expandBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.expandBtn:hover {
+  border-color: var(--color);
+  color: var(--color);
+  transform: rotate(90deg);
+}
+
+.expandBtn.expanded {
+  border-color: var(--color);
+  color: var(--color);
+  transform: rotate(180deg);
+}
+
+/* ===== OPTIONS ===== */
+.options {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+}
+
+.optionsVisible {
+  max-height: 200px;
+  opacity: 1;
+  padding-top: 12px;
+}
+
+.optionGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.optionGroup:last-child {
+  margin-bottom: 0;
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  min-width: 80px;
+}
+
+.optionLabel i {
+  font-size: 0.85rem;
+  color: var(--color);
+}
+
+/* ===== PRIORITÉ ===== */
+.priorityButtons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.priorityBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.priorityBtn:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-1px);
+}
+
+.priorityActive {
+  font-weight: 600;
+  transform: translateY(-1px);
+}
+
+.priorityDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.priorityLabel {
+  font-size: 0.75rem;
+}
+
+/* ===== DATE ===== */
+.dateInput {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 160px;
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: var(--color);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.08);
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+  filter: var(--filter-icon);
+  cursor: pointer;
+}
+
+/* ===== BOUTON SOUMETTRE ===== */
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+.submitActive {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+  opacity: 1;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+}
+
+.submitActive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4);
+}
+
+.submitActive:active {
+  transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+  cursor: not-allowed;
+}
+
+.submitBtn i {
+  font-size: 0.9rem;
+}
+
+/* ===== SPINNER ===== */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== RACCOURCI CLAVIER ===== */
+.shortcutHint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  justify-content: center;
+}
+
+.shortcutHint kbd {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-family: 'Consolas', monospace;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.shortcutHint span {
+  font-size: 0.65rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .taskInputWrapper {
+    padding: 16px 16px 14px;
+  }
+
+  .optionGroup {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .optionLabel {
+    min-width: auto;
+  }
+
+  .priorityButtons {
+    justify-content: stretch;
+  }
+
+  .priorityBtn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .dateInput {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .submitBtn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .shortcutHint {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskInputWrapper {
+    padding: 12px 12px 12px;
+  }
+
+  .inputContainer {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .inputWrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .input {
+    font-size: 0.9rem;
+    padding: 10px 0;
+  }
+
+  .expandBtn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .priorityBtn {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+
+  .priorityLabel {
+    font-size: 0.65rem;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+
+  .optionsVisible {
+    max-height: 250px;
+  }
+}
+
+/* ===== MODE CLAIR ===== */
+[data-theme="light"] .taskInputWrapper {
+  background: #ffffff;
+}
+
+[data-theme="light"] .inputWrapper {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .priorityBtn:hover {
+  background: #f1f5f9;
+}
+
+[data-theme="light"] .dateInput {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .shortcutHint kbd {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] .expandBtn {
+  background: #f8fafc;
 }
