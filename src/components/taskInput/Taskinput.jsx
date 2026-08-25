@@ -181,12 +181,6 @@ export default function TaskInput({ addTask, isLoading = false }) {
           )}
         </button>
       </form>
-
-      {/* Indicateur de raccourci clavier */}
-      <div className={styles.shortcutHint}>
-        <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd>
-        <span>pour ajouter rapidement</span>
-      </div>
     </div>
   );
 }

@@ -62,7 +62,7 @@ export default function Footer({
           <p className={styles.message}>
             {totalTasks > 0 ? (
               <>
-                <span className={styles.messageIcon}>💪</span>
+                <span className={styles.messageIcon}></span>
                 {getMotivationalMessage()}
               </>
             ) : (

@@ -53,10 +53,7 @@ export default function TaskList({
         <p className={Styles.emptyDescription}>
           Commencez par ajouter une nouvelle tâche ci-dessus.
         </p>
-        <div className={Styles.emptyHint}>
-          <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>N</kbd>
-          <span>pour ajouter rapidement</span>
-        </div>
+        
       </div>
     );
   }
